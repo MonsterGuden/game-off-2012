@@ -6,7 +6,10 @@ var g_resources = [{name: "tiles",
 		    src:  "priv/levels/level1.tmx"},
 		   {name: "player",
 		    type: "image",
-		    src:  "priv/images/player.png"}
+		    src:  "priv/images/player.png"},
+		   {name: "metatiles",
+		    type: "image",
+		    src:  "priv/images/metatiles.png"}
 		  ];
 
 var jsApp = {
@@ -22,6 +25,11 @@ var jsApp = {
     loaded: function() {
 	me.state.set(me.state.PLAY, new PlayScreen());
 	me.entityPool.add("player", PlayerEntity);
+
+	// set key input
+	me.input.bindKey(me.input.KEY.LEFT, "left");
+	me.input.bindKey(me.input.KEY.RIGHT, "right");
+
 	me.state.change(me.state.PLAY);	
     }
 };
