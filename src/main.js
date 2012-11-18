@@ -3,7 +3,10 @@ var g_resources = [{name: "tiles",
 		    src:  "priv/images/tiles.png"},
 		   {name: "level1",
 		    type: "tmx",
-		    src:  "priv/levels/level1.tmx"}
+		    src:  "priv/levels/level1.tmx"},
+		   {name: "player",
+		    type: "image",
+		    src:  "priv/images/player.png"}
 		  ];
 
 var jsApp = {
@@ -18,7 +21,8 @@ var jsApp = {
     },
     loaded: function() {
 	me.state.set(me.state.PLAY, new PlayScreen());
-	me.state.change(me.state.PLAY);
+	me.entityPool.add("player", PlayerEntity);
+	me.state.change(me.state.PLAY);	
     }
 };
 
