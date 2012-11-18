@@ -1,3 +1,11 @@
+var g_resources = [{name: "tiles",
+		    type: "image",
+		    src:  "priv/images/tiles.png"},
+		   {name: "level1",
+		    type: "tmx",
+		    src:  "priv/levels/level1.tmx"}
+		  ];
+
 var jsApp = {
     onload: function() {
 	if(!me.video.init('jsapp', 640, 480, false, 1.0)) {
@@ -5,6 +13,7 @@ var jsApp = {
 	    return;
 	}
 	me.loader.onload = this.loaded.bind(this);
+	me.loader.preload(g_resources);
 	me.state.change(me.state.LOADING);
     },
     loaded: function() {
@@ -15,6 +24,8 @@ var jsApp = {
 
 var PlayScreen = me.ScreenObject.extend({
     onResetEvent: function() {
+	//load level 1
+	me.levelDirector.loadLevel("level1");
     },
     onDestroyEvent : function() {
     }
