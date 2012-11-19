@@ -31,6 +31,8 @@ var jsApp = {
 
 	// set key input
 	me.input.bindKey(me.input.KEY.SPACE, "jump");
+	me.input.bindTouch(me.input.KEY.SPACE);
+	me.input.bindMouse(me.input.mouse.LEFT, me.input.KEY.SPACE);
 
 	me.state.change(me.state.PLAY);	
     }
