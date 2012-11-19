@@ -12,6 +12,8 @@ var g_resources = [{name: "tiles",
 		    src:  "priv/images/metatiles.png"}
 		  ];
 
+const JUMPER = 1;
+
 var jsApp = {
     onload: function() {
 	if(!me.video.init('jsapp', 640, 480, false, 1.0)) {
@@ -25,10 +27,10 @@ var jsApp = {
     loaded: function() {
 	me.state.set(me.state.PLAY, new PlayScreen());
 	me.entityPool.add("player", PlayerEntity);
+	me.entityPool.add("jumper", JumperEntity);
 
 	// set key input
-	me.input.bindKey(me.input.KEY.LEFT, "left");
-	me.input.bindKey(me.input.KEY.RIGHT, "right");
+	me.input.bindKey(me.input.KEY.SPACE, "jump");
 
 	me.state.change(me.state.PLAY);	
     }
