@@ -9,7 +9,10 @@ var g_resources = [{name: "tiles",
 		    src:  "priv/images/player.png"},
 		   {name: "metatiles",
 		    type: "image",
-		    src:  "priv/images/metatiles.png"}
+		    src:  "priv/images/metatiles.png"},
+		   {name: "jumper",
+		    type: "image",
+		    src:  "priv/images/jumper.png"}
 		  ];
 
 const JUMPER = 1;
