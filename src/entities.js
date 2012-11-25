@@ -22,9 +22,14 @@ var PlayerEntity = me.ObjectEntity.extend({
 
 	var res = me.game.collide(this);
 	if (res) {
-	    this.vel.y = -this.maxVel.y;
-	    this.jumping = true;
-	    this.updateMovement();
+	    if (res.obj.type == "jumper") {
+		this.vel.y = -this.maxVel.y;
+		this.jumping = true;
+		this.updateMovement();
+	    }
+	    else if(res.obj.type == "game_complete") {
+		me.state.change(me.state.GAME_END);
+	    }
 	}
 	else
 	    return true;
@@ -38,6 +43,17 @@ var JumperEntity = me.ObjectEntity.extend({
 	this.yVelocity = 300000;
 	this.type = JUMPER;
 	this.collidable = true;
+	this.type = "jumper";
+    },
+    update: function() {
+    }
+});
+
+var GameCompleteEntity = me.ObjectEntity.extend({
+    init: function(x, y, settings) {
+	this.parent(x, y, settings);
+	this.collidable = true;
+	this.type = "game_complete";
     },
     update: function() {
     }

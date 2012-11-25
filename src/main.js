@@ -1,24 +1,33 @@
 var g_resources = [{name: "tiles",
 		    type: "image",
 		    src:  "priv/images/tiles.png"},
-		   {name: "level1",
+		   {name: "Level 1",
 		    type: "tmx",
 		    src:  "priv/levels/level1.tmx"},
-		   {name: "level2",
+		   {name: "Level 2",
 		    type: "tmx",
 		    src:  "priv/levels/level2.tmx"},
-		   {name: "level3",
+		   {name: "Level 3",
 		    type: "tmx",
 		    src:  "priv/levels/level3.tmx"},
 		   {name: "player",
 		    type: "image",
 		    src:  "priv/images/player.png"},
+		   {name: "goal",
+		    type: "image",
+		    src:  "priv/images/goal.png"},
 		   {name: "metatiles",
 		    type: "image",
 		    src:  "priv/images/metatiles.png"},
 		   {name: "jumper",
 		    type: "image",
-		    src:  "priv/images/jumper.png"}
+		    src:  "priv/images/jumper.png"},
+		   {name: "titlescreen",
+		    type: "image",
+		    src:  "priv/images/titlescreen.png"},
+		   {name: "endscreen",
+		    type: "image",
+		    src:  "priv/images/endscreen.png"}
 		  ];
 
 const JUMPER = 1;
@@ -34,27 +43,16 @@ var jsApp = {
 	me.state.change(me.state.LOADING);
     },
     loaded: function() {
+	me.state.set(me.state.MENU, new TitleScreen());
 	me.state.set(me.state.PLAY, new PlayScreen());
+	me.state.set(me.state.GAME_END, new EndScreen());
 	me.entityPool.add("player", PlayerEntity);
 	me.entityPool.add("jumper", JumperEntity);
+	me.entityPool.add("game_complete", GameCompleteEntity);
 
-	// set key input
-	me.input.bindKey(me.input.KEY.SPACE, "jump");
-	me.input.bindTouch(me.input.KEY.SPACE);
-	me.input.bindMouse(me.input.mouse.LEFT, me.input.KEY.SPACE);
-
-	me.state.change(me.state.PLAY);	
+	me.state.change(me.state.MENU);
     }
 };
-
-var PlayScreen = me.ScreenObject.extend({
-    onResetEvent: function() {
-	//load level 1
-	me.levelDirector.loadLevel("level1");
-    },
-    onDestroyEvent : function() {
-    }
-});
 
 window.onReady(function() {
     jsApp.onload();
