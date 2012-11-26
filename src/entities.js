@@ -44,6 +44,7 @@ var JumperEntity = me.ObjectEntity.extend({
 	this.type = JUMPER;
 	this.collidable = true;
 	this.type = "jumper";
+	this.updateColRect(-1, 0, 32, 32);
     },
     update: function() {
     }
