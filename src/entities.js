@@ -31,8 +31,7 @@ var PlayerEntity = me.ObjectEntity.extend({
 		me.state.change(me.state.GAME_END);
 	    }
 	}
-	else
-	    return true;
+	this.parent(true);
 	return true;
     }
 });
@@ -47,6 +46,8 @@ var JumperEntity = me.ObjectEntity.extend({
 	this.updateColRect(-1, 0, 32, 32);
     },
     update: function() {
+	this.parent(true);
+	true;
     }
 });
 

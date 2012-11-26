@@ -27,7 +27,10 @@ var g_resources = [{name: "tiles",
 		    src:  "priv/images/titlescreen.png"},
 		   {name: "endscreen",
 		    type: "image",
-		    src:  "priv/images/endscreen.png"}
+		    src:  "priv/images/endscreen.png"},
+		   {name: "background",
+		    type: "image",
+		    src:  "priv/images/background.png"}
 		  ];
 
 const JUMPER = 1;
