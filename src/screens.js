@@ -37,7 +37,7 @@ var TitleScreen = me.ScreenObject.extend({
 var PlayScreen = me.ScreenObject.extend({
     onResetEvent: function(arguments) {
 	//load level 1
-	me.levelDirector.loadLevel("Level 6");
+	me.levelDirector.loadLevel("Level 1");
 
 	bind("jump");
 	me.game.sort();
