@@ -6,6 +6,8 @@ var PlayerEntity = me.ObjectEntity.extend({
 	this.setVelocity(2, 10);
 	this.gravity = 0.2;
 	this.jumpVelocity = 5;
+	this.direction = 1;
+	this.flipx = false;
 	
 	// follow our position
 	me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
@@ -16,6 +18,12 @@ var PlayerEntity = me.ObjectEntity.extend({
 
         if(res && res.obj.type == "game_complete")
             me.state.change(me.state.GAME_END);
+	if(res && res.obj.type == "rotator")
+	{
+	    this.direction *= -1;
+	    this.flipx = !this.flipx;
+	    this.flipX(this.flipx);
+	}
 
 	if(me.input.isKeyPressed("jump")) {
 	    if(!this.falling && !this.jumping) {
@@ -26,7 +34,7 @@ var PlayerEntity = me.ObjectEntity.extend({
 		this.jumping = true;
 	    }
 	}
-	this.vel.x += this.accel.x * me.timer.tick;
+	this.vel.x = this.accel.x * me.timer.tick * this.direction;
 	this.updateMovement();
 	this.parent(true);
 	return true;
@@ -51,6 +59,16 @@ var GameCompleteEntity = me.ObjectEntity.extend({
 	this.parent(x, y, settings);
 	this.collidable = true;
 	this.type = "game_complete";
+    },
+    update: function() {
+    }
+});
+
+var RotatorEntity = me.ObjectEntity.extend({
+    init: function(x, y, settings) {
+	this.parent(x, y, settings);
+	this.collidable = true;
+	this.type = "rotator";
     },
     update: function() {
     }
