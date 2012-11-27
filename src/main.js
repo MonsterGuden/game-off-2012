@@ -19,6 +19,9 @@ var g_resources = [{name: "tiles",
 		   {name: "Level 6",
 		    type: "tmx",
 		    src:  "priv/levels/level6.tmx"},
+		   {name: "Level 7",
+		    type: "tmx",
+		    src:  "priv/levels/level7.tmx"},
 		   {name: "player",
 		    type: "image",
 		    src:  "priv/images/player.png"},
@@ -31,6 +34,9 @@ var g_resources = [{name: "tiles",
 		   {name: "jumper",
 		    type: "image",
 		    src:  "priv/images/jumper.png"},
+		   {name: "rotator",
+		    type: "image",
+		    src:  "priv/images/rotator.png"},
 		   {name: "titlescreen",
 		    type: "image",
 		    src:  "priv/images/titlescreen.png"},
@@ -61,6 +67,7 @@ var jsApp = {
 	me.entityPool.add("player", PlayerEntity);
 	me.entityPool.add("jumper", JumperEntity);
 	me.entityPool.add("game_complete", GameCompleteEntity);
+	me.entityPool.add("rotator", RotatorEntity);
 
 	me.state.change(me.state.MENU);
     }
