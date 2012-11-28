@@ -23,6 +23,7 @@ var PlayerEntity = me.ObjectEntity.extend({
 	    this.direction *= -1;
 	    this.flipx = !this.flipx;
 	    this.flipX(this.flipx);
+	    res.obj.collidable = false;
 	}
 
 	if(me.input.isKeyPressed("jump")) {
@@ -69,7 +70,15 @@ var RotatorEntity = me.ObjectEntity.extend({
 	this.parent(x, y, settings);
 	this.collidable = true;
 	this.type = "rotator";
+	this.ticks = 0;
     },
     update: function() {
+        if(!this.collidable)
+        {
+            if(this.ticks < 100)
+                this.ticks += me.timer.tick;
+            else
+                this.collidable = true;
+        }
     }
 });
