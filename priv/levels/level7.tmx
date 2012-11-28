@@ -47,10 +47,11 @@
     <property name="spritewidth" value="32"/>
    </properties>
   </object>
-  <object name="game_complete" x="32" y="320" width="32" height="32">
+  <object name="me.LevelEntity" x="32" y="320" width="32" height="32">
    <properties>
-    <property name="image" value="goal"/>
-    <property name="spritewidth" value="32"/>
+    <property name="duration" value="1"/>
+    <property name="fade" value="#000000"/>
+    <property name="to" value="Level 8"/>
    </properties>
   </object>
  </objectgroup>
