@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="20" height="15" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="background_image" value="background"/>
+ </properties>
  <tileset firstgid="1" name="tiles" tilewidth="32" tileheight="32">
   <image source="../images/tiles.png" width="192" height="32"/>
  </tileset>
@@ -14,7 +17,7 @@
  <tileset firstgid="8" name="goal" tilewidth="32" tileheight="32">
   <image source="../images/goal.png" width="32" height="32"/>
  </tileset>
- <layer name="parallax" width="20" height="15">
+ <layer name="paralla" width="20" height="15">
   <properties>
    <property name="imagesrc" value="background"/>
   </properties>
