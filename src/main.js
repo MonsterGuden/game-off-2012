@@ -25,6 +25,9 @@ var g_resources = [{name: "tiles",
 		   {name: "Level 8",
 		    type: "tmx",
 		    src:  "priv/levels/level8.tmx"},
+		   {name: "Level 9",
+		    type: "tmx",
+		    src:  "priv/levels/level9.tmx"},
 		   {name: "player",
 		    type: "image",
 		    src:  "priv/images/player.png"},
@@ -48,7 +51,10 @@ var g_resources = [{name: "tiles",
 		    src:  "priv/images/endscreen.png"},
 		   {name: "background",
 		    type: "image",
-		    src:  "priv/images/background.png"}
+		    src:  "priv/images/background.png"},
+		   {name: "code1",
+		    type: "image",
+		    src:  "priv/images/code1.png"}
 		  ];
 
 const JUMPER = 1;

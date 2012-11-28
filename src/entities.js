@@ -3,8 +3,8 @@ var PlayerEntity = me.ObjectEntity.extend({
 	this.parent(x, y, settings);
 
 	//set velocity
-	this.setVelocity(2, 10);
-	this.gravity = 0.2;
+	this.setVelocity(3, 10);
+	this.gravity = 0.3;
 	this.jumpVelocity = 5;
 	this.direction = 1;
 	this.flipx = false;
@@ -45,7 +45,6 @@ var PlayerEntity = me.ObjectEntity.extend({
 var JumperEntity = me.ObjectEntity.extend({
     init: function(x, y, settings) {
 	this.parent(x, y, settings);
-	this.yVelocity = 300000;
 	this.type = JUMPER;
 	this.collidable = true;
 	this.type = "jumper";
