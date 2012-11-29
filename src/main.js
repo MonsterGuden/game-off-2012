@@ -55,9 +55,6 @@ var g_resources = [{name: "tiles",
 		   {name: "background",
 		    type: "image",
 		    src:  "priv/images/background.png"},
-		   {name: "code1",
-		    type: "image",
-		    src:  "priv/images/code1.png"}
 		  ];
 
 const JUMPER = 1;
@@ -68,6 +65,7 @@ var jsApp = {
 	    alert("Need HTML 5.0 supported browser!");
 	    return;
 	}
+        me.sys.fps = 30;
 	me.loader.onload = this.loaded.bind(this);
 	me.loader.preload(g_resources);
 	me.state.change(me.state.LOADING);
