@@ -36,7 +36,7 @@
     <property name="to" value="Level 8"/>
    </properties>
   </object>
-  <object name="rotator" x="576" y="416" width="32" height="32">
+  <object name="rotator" x="608" y="416" width="32" height="32">
    <properties>
     <property name="image" value="rotator"/>
     <property name="spritewidth" value="32"/>

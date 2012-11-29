@@ -20,10 +20,8 @@ var PlayerEntity = me.ObjectEntity.extend({
             me.state.change(me.state.GAME_END);
 	if(res && res.obj.type == "rotator")
 	{
-	    this.direction *= -1;
-	    this.flipx = !this.flipx;
-	    this.flipX(this.flipx);
-	    res.obj.collidable = false;
+            res.obj.collision();
+            this.rotate();
 	}
 
 	if(me.input.isKeyPressed("jump")) {
@@ -39,6 +37,11 @@ var PlayerEntity = me.ObjectEntity.extend({
 	this.updateMovement();
 	this.parent(true);
 	return true;
+    },
+    rotate: function() {
+	this.direction *= -1;
+	this.flipx = !this.flipx;
+	this.flipX(this.flipx);
     }
 });
 
@@ -79,5 +82,9 @@ var RotatorEntity = me.ObjectEntity.extend({
             else
                 this.collidable = true;
         }
+    },
+    collision: function() {
+        this.ticks = 0;
+        this.collidable = false;
     }
 });
