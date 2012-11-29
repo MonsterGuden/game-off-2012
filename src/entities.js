@@ -11,6 +11,9 @@ var PlayerEntity = me.ObjectEntity.extend({
 	
 	// follow our position
 	me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
+
+	if(settings.left == true)
+	    this.rotate();
     },
     update: function() {
         // get all collisions
