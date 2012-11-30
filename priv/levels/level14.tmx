@@ -35,7 +35,7 @@
     <property name="spritewidth" value="32"/>
    </properties>
   </object>
-  <object name="me.LevelEntity" x="32" y="704" width="640" height="32">
+  <object name="lava" x="32" y="704" width="640" height="32">
    <properties>
     <property name="duration" value="1"/>
     <property name="fade" value="#000000"/>
@@ -67,7 +67,7 @@
     <property name="spritewidth" value="32"/>
    </properties>
   </object>
-  <object name="me.LevelEntity" x="384" y="352" width="160" height="32">
+  <object name="lava" x="384" y="352" width="160" height="32">
    <properties>
     <property name="duration" value="1"/>
     <property name="fade" value="#000000"/>

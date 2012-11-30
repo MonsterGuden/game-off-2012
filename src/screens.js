@@ -21,6 +21,8 @@ var TitleScreen = me.ScreenObject.extend({
 	bind("continue");
     },
     update: function() {
+	levelCounter.reset();
+	deathCounter.reset();
 	if (me.input.isKeyPressed("continue")) {
 	    me.state.change(me.state.PLAY);
 	}
@@ -58,6 +60,7 @@ var EndScreen = me.ScreenObject.extend({
 	bind("quit");
     },
     update: function() {
+	levelCounter.reset();
 	if (me.input.isKeyPressed("quit")) {
 	    me.state.change(me.state.MENU);
 	}

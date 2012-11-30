@@ -75,7 +75,37 @@ var g_resources = [{name: "tiles",
 		    src:  "priv/images/background.png"},
 		  ];
 
-const JUMPER = 1;
+var levelCounter = {
+    onload: function() {
+	this.text = document.getElementById("level");
+	this.reset();
+    },
+    reset: function() {
+	this.text.innerHTML = "level 0";
+    },
+    set: function(level) {
+	this.text.innerHTML = level;
+    }
+};
+
+var deathCounter = {
+    onload: function() {
+	this.text = document.getElementById("deathcounter");
+	this.nrOfDeaths = 0;
+	this.reset();
+    },
+    reset: function() {
+	this.nrOfDeaths = 0;
+	this.update();
+    },
+    update: function() {
+	this.text.innerHTML = this.nrOfDeaths;
+    },
+    increase: function() {
+	this.nrOfDeaths += 1;
+	this.update();
+    }
+};
 
 var jsApp = {
     onload: function() {
@@ -96,11 +126,14 @@ var jsApp = {
 	me.entityPool.add("jumper", JumperEntity);
 	me.entityPool.add("game_complete", GameCompleteEntity);
 	me.entityPool.add("rotator", RotatorEntity);
+	me.entityPool.add("lava", LavaEntity);
 
 	me.state.change(me.state.MENU);
     }
 };
 
 window.onReady(function() {
+    levelCounter.onload();
+    deathCounter.onload();
     jsApp.onload();
 });

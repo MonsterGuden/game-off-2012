@@ -14,6 +14,8 @@ var PlayerEntity = me.ObjectEntity.extend({
 
 	if(settings.left == true)
 	    this.rotate();
+
+	levelCounter.set(me.levelDirector.getCurrentLevelId());
     },
     update: function() {
         // get all collisions
@@ -45,13 +47,15 @@ var PlayerEntity = me.ObjectEntity.extend({
 	this.direction *= -1;
 	this.flipx = !this.flipx;
 	this.flipX(this.flipx);
+    },
+    death: function() {
+	deathCounter.increase();
     }
 });
 
 var JumperEntity = me.ObjectEntity.extend({
     init: function(x, y, settings) {
 	this.parent(x, y, settings);
-	this.type = JUMPER;
 	this.collidable = true;
 	this.type = "jumper";
 	this.updateColRect(11, 10, -1, 0);
@@ -89,5 +93,15 @@ var RotatorEntity = me.ObjectEntity.extend({
     collision: function() {
         this.ticks = 0;
         this.collidable = false;
+    }
+});
+
+var LavaEntity = me.LevelEntity.extend({
+    init: function(x, y, settings) {
+	this.parent(x, y, settings);
+    },
+    onCollision: function(res, obj) {
+	this.parent(res, obj);
+	obj.death();
     }
 });
