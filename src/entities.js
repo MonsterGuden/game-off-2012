@@ -21,6 +21,10 @@ var PlayerEntity = me.ObjectEntity.extend({
 
         if(res && res.obj.type == "game_complete")
             me.state.change(me.state.GAME_END);
+        if(res && res.obj.type == "lava")
+        {
+            me.levelDirector.reloadLevel();
+        }
 	if(res && res.obj.type == "rotator")
 	{
             res.obj.collision();
@@ -51,7 +55,6 @@ var PlayerEntity = me.ObjectEntity.extend({
 var JumperEntity = me.ObjectEntity.extend({
     init: function(x, y, settings) {
 	this.parent(x, y, settings);
-	this.type = JUMPER;
 	this.collidable = true;
 	this.type = "jumper";
 	this.updateColRect(11, 10, -1, 0);
@@ -90,4 +93,39 @@ var RotatorEntity = me.ObjectEntity.extend({
         this.ticks = 0;
         this.collidable = false;
     }
+});
+
+var LavaEntity = me.ObjectEntity.extend({
+    init: function(x, y, settings) {
+	this.parent(x, y, settings);
+        this.objectHeight = settings.height;
+        this.objectWidth = settings.width;
+	this.collidable = true;
+        this.drawHeight = settings.height/2;
+        this.drawWidth = settings.width;
+        this.maxDrawHeight = this.objectHeight - 6;
+        this.minDrawHeight = 10;
+        this.drawPosY = this.pos.y + this.drawHeight;
+        this.direction = 1;
+        this.updateColRect(0, this.objectWidth, 0, this.drawHeight);
+        this.type ="lava";
+    },
+    update: function() {
+        if(this.drawHeight == this.maxDrawHeight)
+            this.direction = -1;
+        else if(this.drawHeight == this.minDrawHeight)
+            this.direction = 1;
+
+        this.drawHeight += this.direction;
+
+        this.drawPosY = this.pos.y + (32 - this.drawHeight);
+        me.debug.renderHitBox = true;
+        this.updateColRect(0, this.objectWidth, 0, this.objectHeight);
+        return true;
+    },
+    draw: function(context) {
+        context.fillStyle = "#a20303";
+        context.fillRect(this.pos.x, this.drawPosY,
+                         this.drawWidth, this.drawHeight);
+    },
 });

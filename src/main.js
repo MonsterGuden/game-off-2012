@@ -96,6 +96,7 @@ var jsApp = {
 	me.entityPool.add("jumper", JumperEntity);
 	me.entityPool.add("game_complete", GameCompleteEntity);
 	me.entityPool.add("rotator", RotatorEntity);
+        me.entityPool.add("lava", LavaEntity);
 
 	me.state.change(me.state.MENU);
     }
